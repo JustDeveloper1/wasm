@@ -4,6 +4,8 @@
 extern "C" {
 
     char* reverseString(const char* input) {
+        if (input == nullptr) return nullptr;
+        
         int length = strlen(input);
         char* output = (char*)malloc(length + 1);
         
@@ -16,10 +18,13 @@ extern "C" {
     }
 
     int getStringLength(const char* str) {
+        if (str == nullptr) return 0;
         return strlen(str);
     }
 
     void freeString(char* str) {
-        free(str);
+        if (str != nullptr) {
+            free(str);
+        }
     }
 }

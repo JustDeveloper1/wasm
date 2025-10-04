@@ -30,9 +30,10 @@ jobs:
         run: |
           emcc reverse.cpp -o reverse.js \
             -s EXPORTED_FUNCTIONS='["_reverseString","_getStringLength","_freeString"]' \
-            -s EXPORTED_RUNTIME_METHODS='["ccall","cwrap","UTF8ToString"]' \
+            -s EXPORTED_RUNTIME_METHODS='["ccall","cwrap","UTF8ToString","stringToUTF8","allocate","UTF8ToString"]' \
             -s MODULARIZE=1 \
-            -s ALLOW_MEMORY_GROWTH=1
+            -s ALLOW_MEMORY_GROWTH=1 \
+            -s INVOKE_RUN=0
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
