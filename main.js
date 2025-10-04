@@ -18,13 +18,12 @@ async function processString() {
     
     if (inputString && inputString.length > 0) {
         try {
-            const inputPtr = wasmModule.stringToUTF8(inputString);
-            
-            const resultPtr = wasmModule._reverseString(inputPtr);
-            
-            const result = wasmModule.UTF8ToString(resultPtr);
-            
-            wasmModule._freeString(resultPtr);
+            const result = wasmModule.ccall(
+                'reverseString',
+                'string',
+                ['string'],
+                [inputString]
+            );
             
             alert(`Исходная строка: ${inputString}\nРазвернутая строка: ${result}`);
         } catch (error) {
