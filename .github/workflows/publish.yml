@@ -28,7 +28,7 @@ jobs:
           version: latest
       - name: Compile C++ to WASM
         run: |
-          emcc reverse.cpp -o reverse.js -s EXPORTED_FUNCTIONS='["_reverseString","_getStringLength"]' -s EXPORTED_RUNTIME_METHODS='["ccall","cwrap","UTF8ToString","stringToUTF8"]' -s MODULARIZE=1
+          emcc reverse.cpp -o reverse.js -s EXPORTED_FUNCTIONS='["_reverseString","_getStringLength","_malloc","_free"]' -s EXPORTED_RUNTIME_METHODS='["ccall","cwrap","UTF8ToString","stringToUTF8"]' -s MODULARIZE=1
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
