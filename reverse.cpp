@@ -1,18 +1,25 @@
 #include <cstring>
+#include <cstdlib>
 
 extern "C" {
-    void reverseString(char* input, char* output, int length) {
+
+    char* reverseString(const char* input) {
+        int length = strlen(input);
+        char* output = (char*)malloc(length + 1);
+        
         for (int i = 0; i < length; i++) {
             output[i] = input[length - 1 - i];
         }
         output[length] = '\0';
+        
+        return output;
     }
 
-    int getStringLength(char* str) {
-        int length = 0;
-        while (str[length] != '\0') {
-            length++;
-        }
-        return length;
+    int getStringLength(const char* str) {
+        return strlen(str);
+    }
+
+    void freeString(char* str) {
+        free(str);
     }
 }
